@@ -8,15 +8,14 @@ app= Flask(__name__)
 
 model = pickle.load(open('md2.pkl', 'rb'))
 
-@app.route('/predict',methods=['POST'])
-
+@app.route('/',methods=['POST'])
 def predict():
     event= json.loads(request.data)
-    Month=event['month']
     Year=event['year']
+    Month=event['month']
     p=int(model.forecast('%s-%s' % (Year,Month))[-1])
     out = {'Prediction': p}
-    return out
+    return out, 200
 
 
 if __name__=='__main__':
