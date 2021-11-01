@@ -6,7 +6,7 @@ import pickle
 app= Flask(__name__)
 
 
-model = pickle.load(open('model.pkl', 'rb'))
+model = pickle.load(open('md2.pkl', 'rb'))
 
 @app.route('/predict',methods=['POST'])
 
